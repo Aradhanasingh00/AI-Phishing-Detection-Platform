@@ -34,9 +34,7 @@ phishing_detection_platform/
 ---
 
 ## Installation
-
-1. **Clone the repository**
-```bash
+ **Clone the repository**
 git clone https://github.com/Aradhanasingh00/AI-Phishing-Detection-Platform.git
 cd AI-Phishing-Detection-Platform
 ##Create and activate a virtual environment
