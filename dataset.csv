@@ -1,0 +1,42 @@
+text,label
+"Congratulations! You've won a free iPhone. Click here to claim now http://scam.com/iphone",phishing
+"Update your account details urgently at http://fakebank.com/login",phishing
+"Free recharge!!! Claim your ₹500 at http://fraudsite.com/recharge",phishing
+"Your tax refund is ready, submit details at http://taxfraud.com",phishing
+"Important: Verify your PayPal account immediately http://paypal-security.com",phishing
+"Final warning: Your ATM card will be blocked! Visit http://atm-update.com",phishing
+"You have been selected for a prize draw. Click here to participate http://prize-fake.com",phishing
+"Urgent: Reset your password at http://unsafe-reset.com",phishing
+"Lottery winner! Claim your cash prize today at http://lotteryfraud.com",phishing
+"Special offer: Free Netflix subscription! Sign up here http://fakenetflix.com",phishing
+"Security alert: Suspicious login detected. Confirm identity http://badlink.com",phishing
+"Free job offer, work from home! Apply now http://fakejob.com",phishing
+"Dear user, you won a free vacation package! http://scamholiday.com",phishing
+"Update your Aadhaar details now to avoid deactivation http://aadhaar-fake.com",phishing
+"You have received a secure document. Open http://doc-scam.com",phishing
+"Free gift card! Limited offer at http://fakegift.com",phishing
+"Warning: Your social media account will be disabled! http://social-fake.com",phishing
+"Check your bank statement urgently http://bank-fraud.com",phishing
+"Unlock free premium membership today http://premium-scam.com",phishing
+"Click here to win an Amazon voucher worth ₹5000 http://amazonfraud.com",phishing
+
+"Meeting scheduled at 4PM, join via Zoom link",legitimate
+"Reminder: Your subscription renewal is due tomorrow",legitimate
+"Your order #24567 has been shipped successfully",legitimate
+"Payment of ₹1500 received for invoice #9087",legitimate
+"Your Amazon package will be delivered today",legitimate
+"Team lunch planned for Friday at 1PM",legitimate
+"Kindly review the attached project report",legitimate
+"Happy Birthday! Wishing you a great year ahead",legitimate
+"Flight booking confirmed. Check your e-ticket",legitimate
+"Exam schedule has been released, check portal",legitimate
+"Salary credited successfully into your account",legitimate
+"Interview scheduled for Monday at 10AM",legitimate
+"System update completed successfully",legitimate
+"Library books due for return this week",legitimate
+"Your movie tickets have been booked",legitimate
+"Thank you for attending today’s session",legitimate
+"Conference registration confirmed",legitimate
+"Weekly report submitted to manager",legitimate
+"Password changed successfully by user",legitimate
+"Training session scheduled for next week",legitimate

@@ -1,0 +1,6 @@
+url,label
+"http://secure-bank-login.com","phishing"
+"http://paypal-security-update.net","phishing"
+"https://www.google.com","legitimate"
+"https://openai.com","legitimate"
+

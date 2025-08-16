@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Phishing Detection — Messages & URLs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --indigo:#6366f1; --green:#22c55e; --red:#ef4444; --amber:#f59e0b;
+      --shadow:0 16px 36px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:linear-gradient(135deg,#0b1222 0%,#121a2f 60%,#0f172a 100%);
+      color:var(--text); font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:26px;
+    }
+    .wrap{width:100%; max-width:1100px;}
+    .title{
+      text-align:center; font-weight:900; letter-spacing:.3px; margin:6px 0 6px;
+      font-size:clamp(22px,3.2vw,36px);
+      background:linear-gradient(90deg,#7dd3fc,#a78bfa,#22d3ee);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .subtitle{ text-align:center; color:var(--muted); margin-bottom:26px; }
+    .grid{
+      display:grid; gap:18px; grid-template-columns:1fr; align-items:start;
+    }
+    @media(min-width:980px){ .grid{ grid-template-columns:1fr 1fr; } }
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:18px; box-shadow:var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+    h3{ margin:6px 0 12px; color:#c7d2fe; font-size:18px; }
+    .hint{ font-size:12px; color:#9ca3af; margin-top:6px; }
+    .note{ font-size:13px; color:#93c5fd; margin-top:10px; white-space:pre-wrap; }
+    .log{
+      background:#0b1222; border:1px dashed rgba(148,163,184,.25);
+      padding:10px 12px; border-radius:10px; color:#cbd5e1; font-size:12.5px; white-space:pre-wrap;
+      margin-top:8px;
+    }
+    input[type="file"], input[type="text"], button{
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(148,163,184,.25);
+      background:#0b1222; color:var(--text); font-size:15px; outline:none;
+    }
+    input[type="text"]::placeholder{ color:#64748b; }
+    .row{ display:flex; gap:10px; }
+    .row > *{ flex:1; }
+    button{
+      border:none; cursor:pointer; font-weight:700; letter-spacing:.2px;
+      background:linear-gradient(90deg,var(--indigo),var(--green)); transition:.1s ease;
+    }
+    button:hover{ filter:brightness(1.07); }
+    button:active{ transform:translateY(1px); }
+    .badge{
+      display:inline-block; padding:8px 12px; border-radius:999px; font-weight:800;
+      letter-spacing:.3px; margin-top:10px; box-shadow:var(--shadow);
+      border:1px solid transparent;
+    }
+    .ok{ background:rgba(34,197,94,.15); color:#86efac; border-color:rgba(34,197,94,.35); }
+    .bad{ background:rgba(239,68,68,.15); color:#fecaca; border-color:rgba(239,68,68,.35); }
+    .warn{ background:rgba(245,158,11,.15); color:#fde68a; border-color:rgba(245,158,11,.35); }
+    .muted{ color:var(--muted); }
+    footer{ text-align:center; margin-top:20px; color:#94a3b8; font-size:12px; }
+    .sep{ height:1px; background:rgba(255,255,255,.08); margin:14px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">AI Phishing Detection — Messages & URLs</div>
+    <div class="subtitle">Upload CSVs to train • Type to detect • Everything on one page.</div>
+
+    <div class="grid">
+      <!-- LEFT: Trainers -->
+      <div class="card">
+        <h3>Phase 1 — Train Models</h3>
+
+        <!-- Message Trainer -->
+        <form action="/train_message" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <input type="file" name="dataset" accept=".csv" required>
+            <button type="submit">Train Message Model</button>
+          </div>
+          <div class="hint">CSV format for messages: <b>text,label</b> (labels like <i>phishing</i> / <i>legitimate</i>)</div>
+          {% if msg_train_msg %}<div class="note">{{ msg_train_msg }}</div>{% endif %}
+          {% if msg_train_log %}<div class="log">{{ msg_train_log }}</div>{% endif %}
+        </form>
+
+        <div class="sep"></div>
+
+        <!-- URL Trainer -->
+        <form action="/train_url" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <input type="file" name="dataset" accept=".csv" required>
+            <button type="submit">Train URL Model</button>
+          </div>
+          <div class="hint">CSV format for URLs: <b>url,label</b></div>
+          {% if url_train_msg %}<div class="note">{{ url_train_msg }}</div>{% endif %}
+          {% if url_train_log %}<div class="log">{{ url_train_log }}</div>{% endif %}
+        </form>
+      </div>
+
+      <!-- RIGHT: Predictors -->
+      <div class="card">
+        <h3>Phase 2 — Predict</h3>
+
+        <!-- Message Predictor -->
+        <form action="/predict_message" method="post">
+          <input type="text" name="message" placeholder="Paste email/SMS text to check…" value="{{ last_message or '' }}" required>
+          <div class="row">
+            <button type="submit">Check Text</button>
+          </div>
+        </form>
+        {% if msg_pred_error %}<div class="badge warn">{{ msg_pred_error }}</div>{% endif %}
+        {% if msg_prediction is not none %}
+          {% if msg_is_phish %}
+            <div class="badge bad">🚨 Phishing (Text)</div>
+          {% else %}
+            <div class="badge ok">✅ Legitimate (Text)</div>
+          {% endif %}
+          {% if msg_proba_line %}<div class="hint">{{ msg_proba_line }}</div>{% endif %}
+        {% elif not msg_model_ready %}
+          <div class="hint muted">Message model not trained yet.</div>
+        {% endif %}
+
+        <div class="sep"></div>
+
+        <!-- URL Predictor -->
+        <form action="/predict_url" method="post">
+          <input type="text" name="url" placeholder="Enter a URL like https://secure-bank.com/login" value="{{ last_url or '' }}" required>
+          <div class="row">
+            <button type="submit">Check URL</button>
+          </div>
+        </form>
+        {% if url_pred_error %}<div class="badge warn">{{ url_pred_error }}</div>{% endif %}
+        {% if url_prediction is not none %}
+          {% if url_is_phish %}
+            <div class="badge bad">🚨 Phishing (URL)</div>
+          {% else %}
+            <div class="badge ok">✅ Likely Safe (URL)</div>
+          {% endif %}
+          {% if url_proba_line %}<div class="hint">{{ url_proba_line }}</div>{% endif %}
+        {% elif not url_model_ready %}
+          <div class="hint muted">URL model not trained yet.</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <footer>© 2025 • Single-page Flask • Built for bytebuster</footer>
+  </div>
+</body>
+</html>

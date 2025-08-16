@@ -1,0 +1,5 @@
+text,label
+"Your account is locked. Click here to unlock.","phishing"
+"Dear customer, your electricity bill is due.","phishing"
+"Meeting at 3 PM in the office.","legitimate"
+"Happy Birthday! Have a great day.","legitimate"
