@@ -73,7 +73,7 @@ Pandas, Numpy (Data Handling)
 HTML/CSS/Bootstrap (Frontend)
 
 # Created by
-Aradhana Singh (bytebuster)
+Aradhana Singh 
 
 GitHub: Aradhanasingh00
 
