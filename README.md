@@ -73,14 +73,11 @@ Pandas, Numpy (Data Handling)
 HTML/CSS/Bootstrap (Frontend)
 
 # 🚀 Run Locally (Linux / macOS)
-
-Follow these simple steps to set up and run the **AI Phishing Detection Platform**:
-
-```bash
+bash.......
 #  Clone the repository
 git clone https://github.com/Aradhanasingh00/AI-Phishing-Detection-Platform.git
 
-# Move into the project directory
+#  Move into the project directory
 cd AI-Phishing-Detection-Platform
 
 #  Create a virtual environment
@@ -94,7 +91,6 @@ pip install -r requirements.txt
 
 #  Run the application
 python3 app.py
-
 
 # Created by
 Aradhana Singh 
