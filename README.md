@@ -41,6 +41,14 @@ cd AI-Phishing-Detection-Platform
 python3 -m venv venv
 source venv/bin/activate       # On Linux/Mac
 venv\Scripts\activate          # On Windows
+# Run Locally (Linux / macOS)
+bash.......
+git clone https://github.com/Aradhanasingh00/AI-Phishing-Detection-Platform.git
+cd AI-Phishing-Detection-Platform
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 app.py
 
 ##Install dependencies
 pip install -r requirements.txt
@@ -71,21 +79,6 @@ Scikit-learn (Machine Learning)
 Pandas, Numpy (Data Handling)
 
 HTML/CSS/Bootstrap (Frontend)
-
-# Run Locally (Linux / macOS)
-bash.......
-#  Clone the repository
-git clone https://github.com/Aradhanasingh00/AI-Phishing-Detection-Platform.git
-#  Move into the project directory
-cd AI-Phishing-Detection-Platform
-#  Create a virtual environment
-python -m venv venv
-#  Activate the virtual environment
-source venv/bin/activate
-#  Install the required dependencies
-pip install -r requirements.txt
-#  Run the application
-python3 app.py
 
 # Created by
 Aradhana Singh 
