@@ -43,17 +43,17 @@ source venv/bin/activate       # On Linux/Mac
 venv\Scripts\activate          # On Windows
 # Run Locally (Linux / macOS)
 bash.......
-git clone https://github.com/Aradhanasingh00/AI-Phishing-Detection-Platform.git
-cd AI-Phishing-Detection-Platform
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+git clone https://github.com/Aradhanasingh00/AI-Phishing-Detection-Platform.git,
+cd AI-Phishing-Detection-Platform,
+python -m venv venv,
+source venv/bin/activate,
+pip install -r requirements.txt,
 python3 app.py
 
 ##Install dependencies
 pip install -r requirements.txt
-## Run the flask app
 python3 app.py
+
 ## Usage
 #Phase 1 — Train Models
 
